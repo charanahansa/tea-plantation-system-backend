@@ -4,8 +4,8 @@ namespace App\Concrete;
 
 interface EntityInterface {
 
-    public function save();
+    public function save($data);
 
-    public function findById();
+    public function findById($id);
 
 }
