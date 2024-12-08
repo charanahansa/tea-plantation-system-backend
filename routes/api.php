@@ -13,6 +13,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Master\SupplierController;
 use App\Http\Controllers\Master\LeafCategoryController;
 
+use App\Http\Controllers\Transaction\LeafReceiveNoteController;
+
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
@@ -34,3 +36,11 @@ Route::prefix('leaf-category')->group(function () {
     Route::get('/find/{id}', [LeafCategoryController::class, 'findById'])->name('leaf-category.find')->middleware('auth:sanctum');
 });
 
+// Transaction
+Route::prefix('lrn')->group(function () {
+    Route::post('/store', [LeafReceiveNoteController::class, 'saveLeafReceiveNote'])->name('leaf-receive.store')->middleware('auth:sanctum');
+    Route::get('/get-transactions', [LeafReceiveNoteController::class, 'getTransactions'])->name('leaf-receive.get-transactions')->middleware('auth:sanctum');
+    // Route::get('/active-list', [LeafReceiveNoteController::class, 'getActiveAll'])->name('leaf-receive.active')->middleware('auth:sanctum');
+    // Route::get('/inactive-list', [LeafReceiveNoteController::class, 'getInactiveAll'])->name('leaf-receive.inactive')->middleware('auth:sanctum');
+    Route::get('/find/{id}', [LeafReceiveNoteController::class, 'findById'])->name('leaf-receive.find')->middleware('auth:sanctum');
+});
