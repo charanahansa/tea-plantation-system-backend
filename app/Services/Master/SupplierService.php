@@ -8,22 +8,21 @@ use App\Repositories\Master\SupplierRepository;
 
 class SupplierService implements MasterServiceInterface {
 
-    protected $repSupplierService;
-
+    protected $objSupplierRepository;
     public function __construct(SupplierRepository $supplierRepository){
 
-        $this->repSupplierService = $supplierRepository;
+        $this->objSupplierRepository = $supplierRepository;
     }
 
     public function save($data){
 
-        return $this->repSupplierService->save($data);
+        return $this->objSupplierRepository->save($data);
     }
 
     public function findById($id) {
 
         try {
-            return $this->repSupplierService->findById($id);
+            return $this->objSupplierRepository->findById($id);
         } catch (\Exception $e) {
             throw new \Exception('Error fetching supplier: ' . $e->getMessage());
         }
@@ -32,7 +31,7 @@ class SupplierService implements MasterServiceInterface {
     public function getAll() {
 
         try {
-            return $this->repSupplierService->getAll();
+            return $this->objSupplierRepository->getAll();
         } catch (\Exception $e) {
             throw new \Exception('Error fetching suppliers: ' . $e->getMessage());
         }
@@ -41,7 +40,7 @@ class SupplierService implements MasterServiceInterface {
     public function getActiveAll() {
 
         try {
-            $supplierList = $this->repSupplierService->getAll();
+            $supplierList = $this->objSupplierRepository->getAll();
             return $supplierList->where('active', 1);
         } catch (\Exception $e) {
             throw new \Exception('Error fetching active suppliers: ' . $e->getMessage());
@@ -51,7 +50,7 @@ class SupplierService implements MasterServiceInterface {
     public function getInactiveAll() {
 
         try {
-            $supplierList = $this->repSupplierService->getAll();
+            $supplierList = $this->objSupplierRepository->getAll();
             return $supplierList->where('active', 0);
         } catch (\Exception $e) {
             throw new \Exception('Error fetching inactive suppliers: ' . $e->getMessage());

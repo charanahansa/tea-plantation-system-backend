@@ -8,7 +8,6 @@ use App\Repositories\Master\LeafCategoryRepository;
 class LeafCategoryService implements MasterServiceInterface {
 
     protected $objLeafCategoryRepository;
-
     public function __construct(LeafCategoryRepository $LeafCategoryRepository){
 
         $this->objLeafCategoryRepository = $LeafCategoryRepository;

@@ -11,7 +11,6 @@ use App\Services\Master\LeafCategoryService;
 class LeafCategoryController extends Controller {
 
     protected $objLeafCategoryService;
-
     public function __construct(LeafCategoryService $leafCategoryService){
 
         $this->objLeafCategoryService = $leafCategoryService;

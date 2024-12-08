@@ -11,7 +11,6 @@ use App\Services\Master\SupplierService;
 class SupplierController extends Controller {
 
     protected $objSupplierService;
-
     public function __construct(SupplierService $supplierService){
 
         $this->objSupplierService = $supplierService;
