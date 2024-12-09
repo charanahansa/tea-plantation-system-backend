@@ -14,6 +14,7 @@ use App\Http\Controllers\Master\SupplierController;
 use App\Http\Controllers\Master\LeafCategoryController;
 
 use App\Http\Controllers\Transaction\LeafReceiveNoteController;
+use App\Http\Controllers\Transaction\AdvancePayamentNoteController;
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
@@ -40,7 +41,11 @@ Route::prefix('leaf-category')->group(function () {
 Route::prefix('lrn')->group(function () {
     Route::post('/store', [LeafReceiveNoteController::class, 'saveLeafReceiveNote'])->name('leaf-receive.store')->middleware('auth:sanctum');
     Route::get('/get-transactions', [LeafReceiveNoteController::class, 'getTransactions'])->name('leaf-receive.get-transactions')->middleware('auth:sanctum');
-    // Route::get('/active-list', [LeafReceiveNoteController::class, 'getActiveAll'])->name('leaf-receive.active')->middleware('auth:sanctum');
-    // Route::get('/inactive-list', [LeafReceiveNoteController::class, 'getInactiveAll'])->name('leaf-receive.inactive')->middleware('auth:sanctum');
     Route::get('/find/{id}', [LeafReceiveNoteController::class, 'findById'])->name('leaf-receive.find')->middleware('auth:sanctum');
+});
+
+Route::prefix('apn')->group(function () {
+    Route::post('/store', [AdvancePayamentNoteController::class, 'saveAdvancePaymentNote'])->name('advance-payment.store')->middleware('auth:sanctum');
+    Route::get('/get-transactions', [AdvancePayamentNoteController::class, 'getTransactions'])->name('advance-payment.get-transactions')->middleware('auth:sanctum');
+    Route::get('/find/{id}', [AdvancePayamentNoteController::class, 'findById'])->name('advance-payment.find')->middleware('auth:sanctum');
 });
