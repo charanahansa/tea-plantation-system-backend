@@ -15,7 +15,11 @@ class LeafCategoryService implements MasterServiceInterface {
 
     public function save($data){
 
-        return $this->objLeafCategoryRepository->save($data);
+        $tblLeafCategory['id'] = $data['lfId'];
+        $tblLeafCategory['lf_name'] = $data['lfName'];
+        $tblLeafCategory['active'] = $data['active'];
+
+        return $this->objLeafCategoryRepository->save($tblLeafCategory);
     }
 
     public function findById($id) {

@@ -14,7 +14,7 @@ class LeafCategoryRequest extends FormRequest {
     public function rules(): array {
 
         return [
-            'lf_name' => 'required|max:100',
+            'lfName' => 'required|max:100',
             'active'  => 'required|in:0,1',
         ];
     }

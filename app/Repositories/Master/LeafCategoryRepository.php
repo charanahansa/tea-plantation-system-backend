@@ -9,12 +9,12 @@ use App\Models\Master\LeafCategory;
 
 class LeafCategoryRepository implements EntityInterface, MasterInterface {
 
-    public function save($data){
+    public function save($tblLeafCategory){
 
         $leafCategory = LeafCategory::updateOrCreate(
-                        ['id' => $data['id'] ],
-                        $data
-                    );
+                            ['id' => $tblLeafCategory['id'] ],
+                            $tblLeafCategory
+                        );
 
         return $leafCategory;
     }
