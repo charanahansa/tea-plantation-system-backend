@@ -16,7 +16,14 @@ class SupplierService implements MasterServiceInterface {
 
     public function save($data){
 
-        return $this->objSupplierRepository->save($data);
+        $tblSupplier["id"] = $data["supplierId"];
+        $tblSupplier["supplier_name"] = $data["supplierName"];
+        $tblSupplier["contact_no"] = $data["contactNo"];
+        $tblSupplier["email"] = $data["email"];
+        $tblSupplier["address"] = $data["address"];
+        $tblSupplier["active"] = $data["active"];
+
+        return $this->objSupplierRepository->save($tblSupplier);
     }
 
     public function findById($id) {

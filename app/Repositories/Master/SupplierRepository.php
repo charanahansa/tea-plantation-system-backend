@@ -9,11 +9,11 @@ use App\Models\Master\Supplier;
 
 class SupplierRepository implements EntityInterface, MasterInterface {
 
-    public function save($data){
+    public function save($tblSupplier){
 
         $supplier = Supplier::updateOrCreate(
-                        ['id' => $data['id'] ],
-                        $data
+                        ['id' => $tblSupplier['id'] ],
+                        $tblSupplier
                     );
 
         return $supplier;
