@@ -9,12 +9,14 @@ use App\Models\Transaction\LeafReceiveNote;
 
 class LeafReceiveRepository implements EntityInterface, TransactionInterface {
 
-    public function save($data){
+    public function save($tblLeafReceiveNote){
+
 
         $leafReceiveNote = LeafReceiveNote::updateOrCreate(
-                        ['id' => $data['id'] ],
-                        $data
-                    );
+                                ['id' => $tblLeafReceiveNote['id'] ],
+                                $tblLeafReceiveNote
+                            );
+
 
         return $leafReceiveNote;
     }

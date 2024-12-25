@@ -14,18 +14,13 @@ class LeafReceiveNoteRequest extends FormRequest {
     public function rules(): array {
 
         return [
-            'lr_date' => 'required|date',
-            'supplier_id' => 'required|integer|exists:supplier,id',
-            'lc_id' => 'required|integer|exists:leaf_category,id',
+            'lrnDate' => 'required|date',
+            'supplierId' => 'required|integer|exists:supplier,id',
+            'leafCategoryId' => 'required|integer|exists:leaf_category,id',
             'price' => 'required|numeric|min:0',
             'weight' => 'required|numeric|min:0',
-            'lrn_value' => 'required|numeric|min:0',
-            'paid_value' => 'nullable|numeric|min:0',
-            'paid_on' => 'nullable|date',
+            'amount' => 'required|numeric|min:0',
             'remark' => 'nullable|string|max:100',
-            'cancel' => 'required|boolean',
-            'cancel_on' => 'nullable|date',
-            'cancel_remark' => 'nullable|string|max:100',
         ];
     }
 }

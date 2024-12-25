@@ -18,7 +18,7 @@ class LeafReceiveNote extends Model {
     protected $keyType = 'int';
 
     protected $fillable = [
-        'lr_date',
+        'lrn_date',
         'supplier_id',
         'lc_id',
         'price',

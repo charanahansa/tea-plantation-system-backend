@@ -16,6 +16,13 @@ class LeafReceiveNoteController extends Controller {
         $this->objLeafReceiveService = $leafCategoryService;
     }
 
+    public function loadLeafReceiveNote(){
+
+        $data = $this->objLeafReceiveService->loadData();
+
+        return response()->json($data, 200);
+    }
+
     public function saveLeafReceiveNote(LeafReceiveNoteRequest $request){
 
         $leafReceiveNote = $this->objLeafReceiveService->save($request->all());

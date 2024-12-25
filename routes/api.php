@@ -39,6 +39,7 @@ Route::prefix('leaf-category')->group(function () {
 
 // Transaction
 Route::prefix('lrn')->group(function () {
+    Route::get('/load', [LeafReceiveNoteController::class, 'loadLeafReceiveNote'])->name('leaf-receive.load')->middleware('auth:sanctum');
     Route::post('/store', [LeafReceiveNoteController::class, 'saveLeafReceiveNote'])->name('leaf-receive.store')->middleware('auth:sanctum');
     Route::get('/get-transactions', [LeafReceiveNoteController::class, 'getTransactions'])->name('leaf-receive.get-transactions')->middleware('auth:sanctum');
     Route::get('/find/{id}', [LeafReceiveNoteController::class, 'findById'])->name('leaf-receive.find')->middleware('auth:sanctum');
