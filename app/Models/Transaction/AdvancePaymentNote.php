@@ -15,10 +15,12 @@ class AdvancePaymentNote extends Model {
     public $timestamps = true;
 
     protected $fillable = [
-        'ap_date',
+        'apn_date',
         'supplier_id',
         'value',
         'remark',
+        'settle',
+        'settle_on',
         'cancel',
         'cancel_on',
         'cancel_remark',

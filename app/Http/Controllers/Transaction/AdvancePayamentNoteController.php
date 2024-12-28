@@ -16,6 +16,13 @@ class AdvancePayamentNoteController extends Controller {
         $this->objAdvancePaymentService = $advancePayamentService;
     }
 
+    public function loadAdvancePaymentNote(){
+
+        $data = $this->objAdvancePaymentService->loadData();
+
+        return response()->json($data, 200);
+    }
+
     public function saveAdvancePaymentNote(AdvancePaymentNoteRequest $request){
 
         $leafReceiveNote = $this->objAdvancePaymentService->save($request->all());

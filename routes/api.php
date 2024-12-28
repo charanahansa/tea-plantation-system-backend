@@ -46,6 +46,7 @@ Route::prefix('lrn')->group(function () {
 });
 
 Route::prefix('apn')->group(function () {
+    Route::get('/load', [AdvancePayamentNoteController::class, 'loadAdvancePaymentNote'])->name('advance-payment.load')->middleware('auth:sanctum');
     Route::post('/store', [AdvancePayamentNoteController::class, 'saveAdvancePaymentNote'])->name('advance-payment.store')->middleware('auth:sanctum');
     Route::get('/get-transactions', [AdvancePayamentNoteController::class, 'getTransactions'])->name('advance-payment.get-transactions')->middleware('auth:sanctum');
     Route::get('/find/{id}', [AdvancePayamentNoteController::class, 'findById'])->name('advance-payment.find')->middleware('auth:sanctum');

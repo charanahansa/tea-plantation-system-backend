@@ -9,14 +9,14 @@ use App\Models\Transaction\AdvancePaymentNote;
 
 class AdvancePaymentRepository implements EntityInterface, TransactionInterface {
 
-    public function save($data){
+    public function save($tblAdvancePaymentNote){
 
-        $advancePayamentNote = AdvancePaymentNote::updateOrCreate(
-                        ['id' => $data['id'] ],
-                        $data
-                    );
+        $savedAdvancePayamentNote = AdvancePaymentNote::updateOrCreate(
+                                        ['id' => $tblAdvancePaymentNote['id'] ],
+                                        $tblAdvancePaymentNote
+                                    );
 
-        return $advancePayamentNote;
+        return $savedAdvancePayamentNote;
     }
 
     public function findById($id) {
@@ -31,7 +31,7 @@ class AdvancePaymentRepository implements EntityInterface, TransactionInterface 
     public function getTransactions($fromDate, $toDate){
 
         try {
-            return AdvancePaymentNote::whereBetween('ap_date', [$fromDate, $toDate])->get();
+            return AdvancePaymentNote::whereBetween('apn_date', [$fromDate, $toDate])->get();
         } catch (\Exception $e) {
             throw new \Exception('Advance Payament Note not found: ' . $e->getMessage());
         }
