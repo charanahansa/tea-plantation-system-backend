@@ -16,6 +16,8 @@ use App\Http\Controllers\Master\LeafCategoryController;
 use App\Http\Controllers\Transaction\LeafReceiveNoteController;
 use App\Http\Controllers\Transaction\AdvancePayamentNoteController;
 
+use App\Http\Controllers\Reports\PaymentLedgerController;
+
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
 
@@ -51,3 +53,9 @@ Route::prefix('apn')->group(function () {
     Route::get('/get-transactions', [AdvancePayamentNoteController::class, 'getTransactions'])->name('advance-payment.get-transactions')->middleware('auth:sanctum');
     Route::get('/find/{id}', [AdvancePayamentNoteController::class, 'findById'])->name('advance-payment.find')->middleware('auth:sanctum');
 });
+
+Route::prefix('payment-ledger')->group(function () {
+    Route::get('/load', [PaymentLedgerController::class, 'loadPyamentLedger'])->name('payment-ledger.load')->middleware('auth:sanctum');
+    Route::post('/generate', [PaymentLedgerController::class, 'generatePyamentLedger'])->name('payment-ledger.generate')->middleware('auth:sanctum');
+});
+

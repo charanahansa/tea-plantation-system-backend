@@ -40,8 +40,7 @@ class LeafReceiveService implements TransactionServiceInterface {
         $tblLeafReceiveNote["price"] = $data["price"];
         $tblLeafReceiveNote["weight"] = $data["weight"];
         $tblLeafReceiveNote["lrn_value"] = $data["amount"];
-        $tblLeafReceiveNote["paid_value"] = 0;
-        $tblLeafReceiveNote["paid_on"] = null;
+        $tblLeafReceiveNote["lrn_balance"] = $data["amount"];
         $tblLeafReceiveNote["remark"] = $data["remark"];
         $tblLeafReceiveNote["cancel"] = 0;
         $tblLeafReceiveNote["cancel_on"] = null;
