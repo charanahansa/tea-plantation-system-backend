@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Transaction;
 
-use App\Concrete\EntityInterface;
-use App\Concrete\TransactionInterface;
+use App\Contracts\EntityInterface;
+use App\Contracts\TransactionInterface;
 
 use App\Models\Transaction\LeafReceiveNote;
 

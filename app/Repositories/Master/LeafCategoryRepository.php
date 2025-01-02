@@ -2,8 +2,8 @@
 
 namespace App\Repositories\Master;
 
-use App\Concrete\EntityInterface;
-use App\Concrete\MasterInterface;
+use App\Contracts\EntityInterface;
+use App\Contracts\MasterInterface;
 
 use App\Models\Master\LeafCategory;
 

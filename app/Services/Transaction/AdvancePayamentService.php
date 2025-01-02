@@ -2,7 +2,7 @@
 
 namespace App\Services\Transaction;
 
-use App\Concrete\TransactionServiceInterface;
+use App\Contracts\TransactionServiceInterface;
 use App\Repositories\Master\SupplierRepository;
 use App\Repositories\Transaction\AdvancePaymentRepository;
 

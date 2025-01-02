@@ -2,7 +2,7 @@
 
 namespace App\Services\Master;
 
-use App\Concrete\MasterServiceInterface;
+use App\Contracts\MasterServiceInterface;
 
 use App\Repositories\Master\SupplierRepository;
 

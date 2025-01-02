@@ -2,7 +2,7 @@
 
 namespace App\Services\Reports;
 
-use App\Concrete\ReportServiceInterface;
+use App\Contracts\ReportServiceInterface;
 
 use App\Repositories\Master\SupplierRepository;
 use App\Services\Reports\PaymentSummary;

@@ -57,5 +57,6 @@ Route::prefix('apn')->group(function () {
 Route::prefix('payment-ledger')->group(function () {
     Route::get('/load', [PaymentLedgerController::class, 'loadPyamentLedger'])->name('payment-ledger.load')->middleware('auth:sanctum');
     Route::post('/generate', [PaymentLedgerController::class, 'generatePyamentLedger'])->name('payment-ledger.generate')->middleware('auth:sanctum');
+    Route::get('/generate-excel', [PaymentLedgerController::class, 'generatePyamentLedgerExcel'])->name('payment-ledger.generate-excel');
 });
 

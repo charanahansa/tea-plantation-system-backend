@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Concrete;
+namespace App\Contracts;
 
 interface MasterServiceInterface extends EntityInterface {
 
