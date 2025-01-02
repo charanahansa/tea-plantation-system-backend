@@ -13,6 +13,7 @@ class PaymentLedger implements ReportServiceInterface{
     protected $objSupplierRepository;
     protected $objPaymentSummary;
     protected $objPaymentDetail;
+    
     public function __construct(SupplierRepository $repoSupplierRepository,  PaymentSummary $repoPaymentSummary, PaymentDetail $repoPaymentDetail){
 
         $this->objSupplierRepository = $repoSupplierRepository;

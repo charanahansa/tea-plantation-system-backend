@@ -4,6 +4,6 @@ namespace App\Contracts;
 
 interface DataCollectorInterface {
 
-    public function collectData();
+    public function collectData($input);
 
 }

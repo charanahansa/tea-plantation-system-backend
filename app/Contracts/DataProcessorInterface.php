@@ -4,6 +4,6 @@ namespace App\Contracts;
 
 interface DataProcessorInterface {
 
-    public function processData($collectedData);
+    public function processData($input, $collectedData);
 
 }

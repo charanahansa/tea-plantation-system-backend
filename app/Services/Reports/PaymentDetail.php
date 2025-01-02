@@ -2,33 +2,13 @@
 
 namespace App\Services\Reports;
 
-use App\Repositories\Master\SupplierRepository;
-use App\Repositories\Transaction\LeafReceiveRepository;
-use App\Repositories\Transaction\AdvancePaymentRepository;
-
 class PaymentDetail {
 
-    protected $objSupplierRepository;
-    protected $objLeafReceiveRepository;
-    protected $objAdvancePaymentRepository;
+    public function preparePaymentDetailRecords($collectedData){
 
-    public function __construct(SupplierRepository $repoSupplierRepository, LeafReceiveRepository $repoLeafReceiveRepository, AdvancePaymentRepository $repoAdvancePaymentRepository) {
-
-        $this->objSupplierRepository = $repoSupplierRepository;
-        $this->objLeafReceiveRepository = $repoLeafReceiveRepository;
-        $this->objAdvancePaymentRepository = $repoAdvancePaymentRepository;
-    }
-
-    public function preparePaymentDetailRecords($fromDate, $toDate){
-
-        $listOfSuppliers = $this->objSupplierRepository->getAll();
-        $listOfActiveSuppliers =  $listOfSuppliers->where('active', 1);
-
-        $listOfLrnTransaction = $this->objLeafReceiveRepository->getTransactions($fromDate, $toDate);
-        $listOfValidLrnTransaction = $listOfLrnTransaction->where('cancel', 0);
-
-        $listOfApnTransaction = $this->objAdvancePaymentRepository->getTransactions($fromDate, $toDate);
-        $listOfValidApnTransaction = $listOfApnTransaction->where('cancel', 0);
+        $listOfActiveSuppliers = $collectedData['listOfActiveSuppliers'];
+        $listOfValidLrnTransaction = $collectedData['listOfValidLrnTransaction'];
+        $listOfValidApnTransaction = $collectedData['listOfValidApnTransaction'];
 
         $colPaymentInformation = collect();
         foreach($listOfActiveSuppliers as $supplierKey => $supplierValue){
