@@ -10,9 +10,9 @@ class PaymentDetail {
         $listOfValidLrnTransaction = $collectedData['listOfValidLrnTransaction'];
         $listOfValidApnTransaction = $collectedData['listOfValidApnTransaction'];
 
-        $colPaymentInformation = collect();
         foreach($listOfActiveSuppliers as $supplierKey => $supplierValue){
 
+            $colPaymentInformation = collect();
             $listOfValidSupplierLrnTransaction = $listOfValidLrnTransaction->where('supplier_id', $supplierValue->id);
             foreach($listOfValidSupplierLrnTransaction as $lrnKey => $lrnValue){
 
@@ -40,9 +40,12 @@ class PaymentDetail {
 
                 $colPaymentInformation->push($paymentInformation);
             }
+
+            $colTransactionDetail = $colPaymentInformation->sortBy('source_date');
+            $supplierValue->transaction_detail =  $colTransactionDetail->values()->all();;
         }
 
-        return $colPaymentInformation;
+        return $listOfActiveSuppliers;
     }
 
 }

@@ -25,7 +25,17 @@ class PaymentLedgerDataProcessorService implements DataProcessorInterface {
             return $this->objPaymentSummary->preparePaymentSummaryRecords($collectedData);
         }
 
+        if( ($input->reportType == 1) && ($input->supplierId != 0) ){
+
+            return $this->objPaymentSummary->preparePaymentSummaryRecords($collectedData);
+        }
+
         if( ($input->reportType == 2) && ($input->supplierId == 0) ){
+
+            return $this->objPaymentDetail->preparePaymentDetailRecords($collectedData);
+        }
+
+        if( ($input->reportType == 2) && ($input->supplierId != 0) ){
 
             return $this->objPaymentDetail->preparePaymentDetailRecords($collectedData);
         }

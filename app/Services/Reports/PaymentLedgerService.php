@@ -36,11 +36,14 @@ class PaymentLedgerService {
         return $data;
     }
 
-    public function generate($request) {
+    public function generate($input) {
 
-        $collectedData = $this->objPaymentLedgerDataCollectorService->collectData($request);
+        $collectedData = $this->objPaymentLedgerDataCollectorService->collectData($input);
 
-        $processedData = $this->objPaymentLedgerDataProcessorService->processData($request, $collectedData);
+        $processedData = $this->objPaymentLedgerDataProcessorService->processData($input, $collectedData);
+
+        return $processedData;
+
 
     }
 

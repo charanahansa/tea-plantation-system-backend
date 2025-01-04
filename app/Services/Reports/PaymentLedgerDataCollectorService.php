@@ -25,7 +25,13 @@ class PaymentLedgerDataCollectorService implements DataCollectorInterface {
     public function collectData($input){
 
         $listOfSuppliers = $this->objSupplierRepository->getAll();
-        $listOfActiveSuppliers =  $listOfSuppliers->where('active', 1);
+        if( $input->supplierId != 0 ){
+
+            $listOfActiveSuppliers =  $listOfSuppliers->where('active', 1)->where('id', $input->supplierId);
+        }else{
+
+            $listOfActiveSuppliers =  $listOfSuppliers->where('active', 1);
+        }
 
         $listOfLrnTransaction = $this->objLeafReceiveRepository->getTransactions($input->fromDate, $input->toDate);
         $listOfValidLrnTransaction = $listOfLrnTransaction->where('cancel', 0);

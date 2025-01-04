@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Reports;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-use App\Services\Reports\PaymentLedger;
+use App\Services\Reports\PaymentLedgerService;
 
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -14,7 +14,7 @@ use App\Models\User;
 class PaymentLedgerController extends Controller {
 
     protected $objPaymentLedgerService;
-    public function __construct(PaymentLedger $repoPaymentLedger){
+    public function __construct(PaymentLedgerService $repoPaymentLedger){
 
         $this->objPaymentLedgerService = $repoPaymentLedger;
     }
@@ -28,11 +28,14 @@ class PaymentLedgerController extends Controller {
 
     public function generatePyamentLedger(Request $request){
 
-        if( ($request->reportType == 1) && ($request->supplierId == 0) ){
+        $data['listOfPaymentLedger'] = $this->objPaymentLedgerService->generate($request);
+        return response()->json($data, 200);
 
-            $data['listOfPaymentLedger'] = $this->objPaymentLedgerService->generate($request->fromDate, $request->toDate, $request->reportType, $request->supplier_id);
-            return response()->json($data, 200);
-        }
+        // if( ($request->reportType == 1) && ($request->supplierId == 0) ){
+
+        //     $data['listOfPaymentLedger'] = $this->objPaymentLedgerService->generate($request);
+        //     return response()->json($data, 200);
+        // }
     }
 
     public function generatePyamentLedgerExcel(Request $request){
